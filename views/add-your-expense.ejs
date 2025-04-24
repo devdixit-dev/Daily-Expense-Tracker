@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      font-family: "Outfit", serif;
+    }
+  </style>
+  <title>Add Your Expense</title>
+</head>
+
+<body class="w-screen h-screen">
+  <div class="w-full h-full bg-zinc-800 flex justify-center items-center">
+    <div class="w-[430px] min-h-screen bg-[#FDFBD4] p-4">
+      <div class="w-full flex justify-between items-center">
+        <a href="/user/dashboard" class="text-lg">Dashboard</a>
+        <form action="/user/logout" method="post">
+          <button type="submit"
+            class="cursor-pointer flex m-auto py-2 px-3 text-white bg-red-500 border-2 border-black hover:shadow-xl rounded-sm outline-0">Logout</button>
+        </form>
+      </div>
+
+      <div class="mt-20">
+        <form action="/user/add-your-expense" class="flex flex-col gap-4">
+          <h3 class="flex m-auto mb-4 text-2xl">Add your expense</h3>
+          <div class="flex flex-col gap-2">
+            <p>Expense Name</p>
+            <input type="text" placeholder="Enter name" name="text"
+              class="w-full py-3 px-3 bg-transparent bg-yellow-300 border-2 rounded-sm outline-0">
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <p>Expense Category</p>
+            <input type="text" placeholder="Enter category" name="text"
+              class="w-full py-3 px-3 bg-transparent bg-yellow-300 border-2 rounded-sm outline-0">
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <p>Expense Amount</p>
+            <input type="text" placeholder="Enter amount" name="text"
+              class="w-full py-3 px-3 bg-transparent bg-yellow-300 border-2 rounded-sm outline-0">
+              <li class="text-purple-500 text-sm">Amount should be in INR ₹</li>
+          </div>
+
+          <input type="submit" value="Add" placeholder="Enter amount" name="text"
+              class="w-full py-3 px-3 bg-transparent bg-yellow-300 cursor-pointer border-2 rounded-sm outline-0 hover:shadow-xl">
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+</body>
+
+</html>

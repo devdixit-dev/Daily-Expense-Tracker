@@ -46,9 +46,9 @@ export const Login = async (req, res) => {
     res.cookie('token', encodeURI(user._id), {
       httpOnly: true,
       secure: true,
-      maxAge: 20 * 60 * 1000 // 20min
+      maxAge: 60 * 60 * 1000 // 1hour
     })
-    res.json({user});
+    res.redirect('/user/dashboard');
 
   }
   catch(error) {
@@ -58,7 +58,8 @@ export const Login = async (req, res) => {
 }
 
 export const Logout = async (req, res) => {
-
+  res.clearCookie('token');
+  res.redirect('/')
 }
 
 export const ForgotPassword = async (req, res) => {

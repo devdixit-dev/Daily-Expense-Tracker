@@ -41,6 +41,14 @@ app.get('/user/forgot-password', (req, res) => {
   res.render('forgot-password')
 })
 
+app.get('/user/dashboard', (req, res) => {
+  res.render('dashboard');
+})
+
+app.get('/user/add-your-expense', (req, res) => {
+  res.render('add-your-expense')
+})
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });   
