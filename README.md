@@ -1,4 +1,4 @@
-# 💰 Daily Expense Tracker
+# 💰 Money Nest
 
 A simple and intuitive web app to help you track your daily expenses, manage your budget, and get a better understanding of your spending habits.
 
