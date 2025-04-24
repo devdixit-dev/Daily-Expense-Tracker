@@ -13,7 +13,7 @@
       font-family: "Outfit", serif;
     }
   </style>
-  <title>Sign Up</title>
+  <title>Login</title>
 </head>
 
 <body class="w-screen h-screen">
@@ -35,13 +35,14 @@
             <img src="/images/password.png" width="24">
             <p>Password</p>
           </div>
-          <input type="text" placeholder="Enter your password" name="password"
+          <input type="password" placeholder="Enter your password" name="password"
             class="py-3 px-3 bg-transparent bg-yellow-300 border-2 rounded-sm outline-0">
 
           <input type="submit" value="Login"
-            class="w-[50%] cursor-pointer flex m-auto py-3 px-3 bg-transparent bg-yellow-300 border-2 rounded-sm outline-0 mt-4">
+            class="w-[50%] cursor-pointer flex m-auto py-3 px-3 bg-transparent bg-yellow-300 border-2 hover:shadow-xl rounded-sm outline-0 mt-4">
+            <a href="/user/forgot-password" class='flex m-auto gap-1 text-sm'>Forgot password ? <span class="text-blue-500">Change your password</span></a>
         </form>
-        <a href="/user/signup">Need to create new account ? <span class="text-blue-500">Sign Up</span></a>
+          <a href="/user/signup">Need to create new account ? <span class="text-blue-500">Sign Up</span></a>
       </div>
     </div>
 
