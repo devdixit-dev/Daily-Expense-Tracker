@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      font-family: "Outfit", serif;
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+    }
+  </style>
+  <title>Add Your Expense</title>
+</head>
+
+<body class="w-screen h-screen">
+  <div class="w-full h-full bg-zinc-800 flex justify-center items-center">
+    <div class="w-[430px] min-h-screen bg-[#FDFBD4] p-4">
+      <div class="w-full flex justify-between items-center">
+        <a href="/user/dashboard" class="text-lg">Dashboard</a>
+        <form action="/user/logout" method="post">
+          <button type="submit"
+            class="cursor-pointer flex m-auto py-2 px-3 text-white bg-red-500 border-2 border-black hover:shadow-xl rounded-sm outline-0">Logout</button>
+        </form>
+      </div>
+
+      <div class="w-full flex flex-col gap-4 mt-10">
+        <a href="/user/profile" class="w-full h-[60px] flex justify-start items-center py-1 px-2 bg-yellow-300 border-2 rounded-sm outline-0 text-lg">
+          My Profile
+        </a>
+
+        <a href="" class="w-full h-[60px] flex justify-start items-center py-1 px-2 bg-yellow-300 border-2 rounded-sm outline-0 text-lg">
+          Category Wise Spendings
+        </a>
+
+        <a href="" class="w-full h-[60px] flex justify-start items-center py-1 px-2 bg-yellow-300 border-2 rounded-sm outline-0 text-lg">
+          About Us
+        </a>
+
+        <a href="" class="w-full h-[60px] flex justify-start items-center py-1 px-2 bg-yellow-300 border-2 rounded-sm outline-0 text-lg">
+          Project Info
+        </a>
+
+        <p class="w-full h-[60px] flex justify-start items-center py-1 px-2 bg-yellow-300 border-2 rounded-sm outline-0 text-lg">
+          App version 1.2.7
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</body>
+
+</html>

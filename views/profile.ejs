@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      font-family: "Outfit", serif;
+
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+    }
+  </style>
+  <title>Add Your Expense</title>
+</head>
+
+<body class="w-screen h-screen">
+  <div class="w-full h-full bg-zinc-800 flex justify-center items-center">
+    <div class="w-[430px] min-h-screen bg-[#FDFBD4] p-4">
+      <div class="w-full flex justify-between items-center">
+        <a href="/user/settings" class="text-lg">Back</a>
+        <form action="/user/logout" method="post">
+          <button type="submit"
+            class="cursor-pointer flex m-auto py-2 px-3 text-white bg-red-500 border-2 border-black hover:shadow-xl rounded-sm outline-0">Logout</button>
+        </form>
+      </div>
+
+      <div class="w-full flex flex-col gap-4 mt-10">
+        <h2 class="w-full flex justify-center text-xl">My Profile</h2>
+        <form action="/user/update-info" method="post" class="w-full flex justify-center flex-col gap-2">
+
+          <p class="mt-2">Username</p>
+          <input type="text" placeholder="Update your username" name="username" class="py-3 px-3 bg-transparent bg-yellow-300 border-2 rounded-sm outline-0">
+
+          <p class="mt-2">Email</p>
+          <input type="text" placeholder="Update your email" name="email" class="py-3 px-3 bg-transparent bg-yellow-300 border-2 rounded-sm outline-0">
+
+          <p class="mt-2">Old Password</p>
+          <input type="password" placeholder="Enter your old password" name="oldPassword" class="py-3 px-3 bg-transparent bg-yellow-300 border-2 rounded-sm outline-0">
+
+          <p class="mt-2">New Password</p>
+          <input type="password" placeholder="Enter your new password" name="oldPassword" class="py-3 px-3 bg-transparent bg-yellow-300 border-2 rounded-sm outline-0">
+
+          <input type="submit" value="Update Info" class="w-[50%] cursor-pointer flex m-auto py-3 px-3 bg-transparent bg-yellow-300 border-2 hover:shadow-xl rounded-sm outline-0 mt-4">
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+</body>
+
+</html>

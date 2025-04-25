@@ -29,6 +29,14 @@ export const getAddYourExpense = async (req, res) => {
   res.render('add-your-expense');
 }
 
+export const getSettings = async (req, res) => {
+  res.render('settings')
+}
+
+export const getProfile = async (req, res) => {
+  res.render('profile')
+}
+
 // POST
 export const Signup = async (req, res) => {
   const { username, email, password } = req.body;
@@ -186,3 +194,7 @@ export const deleteExpense = async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 };
+
+export const UpdateInfo = async (req, res) => {
+  
+}
