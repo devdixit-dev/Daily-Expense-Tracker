@@ -11,6 +11,12 @@
   <style>
     * {
       font-family: "Outfit", serif;
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
     }
   </style>
   <title>Add Your Expense</title>
@@ -28,29 +34,29 @@
       </div>
 
       <div class="mt-20">
-        <form action="/user/add-your-expense" class="flex flex-col gap-4">
+        <form action="/user/add-your-expense" method="post" class="flex flex-col gap-4">
           <h3 class="flex m-auto mb-4 text-2xl">Add your expense</h3>
           <div class="flex flex-col gap-2">
             <p>Expense Name</p>
-            <input type="text" placeholder="Enter name" name="text"
+            <input type="text" placeholder="Enter name" name="expenseName"
               class="w-full py-3 px-3 bg-transparent bg-yellow-300 border-2 rounded-sm outline-0">
           </div>
 
           <div class="flex flex-col gap-2">
             <p>Expense Category</p>
-            <input type="text" placeholder="Enter category" name="text"
+            <input type="text" placeholder="Enter category" name="category"
               class="w-full py-3 px-3 bg-transparent bg-yellow-300 border-2 rounded-sm outline-0">
           </div>
 
           <div class="flex flex-col gap-2">
             <p>Expense Amount</p>
-            <input type="text" placeholder="Enter amount" name="text"
+            <input type="number" placeholder="Enter amount" name="amount"
               class="w-full py-3 px-3 bg-transparent bg-yellow-300 border-2 rounded-sm outline-0">
-              <li class="text-purple-500 text-sm">Amount should be in INR ₹</li>
+            <li class="text-purple-500 text-sm">Amount should be in INR ₹</li>
           </div>
 
           <input type="submit" value="Add" placeholder="Enter amount" name="text"
-              class="w-full py-3 px-3 bg-transparent bg-yellow-300 cursor-pointer border-2 rounded-sm outline-0 hover:shadow-xl">
+            class="w-full py-3 px-3 bg-transparent bg-yellow-300 cursor-pointer border-2 rounded-sm outline-0 hover:shadow-xl">
         </form>
       </div>
 

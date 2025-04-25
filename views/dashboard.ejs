@@ -24,7 +24,9 @@
   <div class="w-full h-full flex justify-center items-start">
     <div class="w-[430px] min-h-screen bg-[#FDFBD4] p-4 relative">
       <div class="w-full flex justify-between items-end gap-4">
-        <div class="w-[40px] h-[40px] border-2 rounded-md flex justify-center items-center text-2xl">D</div>
+        <div class="w-[40px] h-[40px] border-2 rounded-md flex justify-center items-center text-xl">
+          <%= name %>
+        </div>
         <form action="/user/logout" method="post">
           <button type="submit"
             class="cursor-pointer flex m-auto py-2 px-3 text-white bg-red-500 border-2 border-black hover:shadow-xl rounded-sm outline-0">
@@ -34,29 +36,34 @@
       </div>
 
       <div class="w-full flex flex-col gap-4 mt-10">
-        <!-- Existing divs -->
-        <div class="w-full h-[110px] flex py-1 px-2 bg-yellow-300 border-2 rounded-sm outline-0">
-          <div class="w-full flex flex-col gap-2">
-            <div class="w-full flex justify-between text-center">
-              <p class="text-lg">Name: Sandwhich</p>
-              <p>
-                <%= Date.now() %>
-              </p>
-            </div>
-            <div class="flex justify-between">
-              <div class="flex flex-col gap-2">
-                <p>Category: Food</p>
-                <p>Amount: ₹60</p>
+        <!-- Add expenses here -->
+        <% expenses.reverse().map((expense)=> { %>
+          <div class="w-full h-[110px] flex py-1 px-2 bg-yellow-300 border-2 rounded-sm outline-0">
+            <div class="w-full flex flex-col gap-2">
+              <div class="w-full flex justify-between text-center">
+                <p class="text-lg">Name : <%= expense.expenseName %>
+                </p>
+                <p>
+                  <%= expense.expenseCreatedAt %>
+                </p>
               </div>
-
-              <div class="flex items-end">
-                <a href="">
-                  <img src="/images/delete.png" width="32">
-                </a>
+              <div class="flex justify-between">
+                <div class="flex flex-col gap-2">
+                  <p>Category : <%= expense.category %>
+                  </p>
+                  <p>Amount : <%= expense.amount %>
+                  </p>
+                </div>
+                <form action="/user/delete/<%= expense.id %>" method="post" class="flex items-end">
+                  <button type="submit" class="cursor-pointer">
+                    <img src="/images/delete.png" width="32">
+                  </button>
+                </form>
               </div>
             </div>
           </div>
-        </div>
+          <% }) %>
+
       </div>
 
       <div class="absolute bottom-4 right-4 z-50">

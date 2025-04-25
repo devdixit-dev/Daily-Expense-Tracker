@@ -1,12 +1,41 @@
+import Expense from '../models/Expense.js';
 import User from '../models/User.js'
 import bcrypt from 'bcrypt'
 
+// GET
+export const getDashboard = async (req, res) => {
+  const user = req.user
+
+  const name = user.username.charAt(0).toUpperCase();
+
+  const expenses = await Expense.find();
+
+  res.render('dashboard', { name, expenses });
+}
+
+export const getSignup = async (req, res) => {
+  res.render('signup');
+}
+
+export const getLogin = async (req, res) => {
+  res.render('login');
+}
+
+export const getForgotPassword = async (req, res) => {
+  res.render('forgot-password');
+}
+
+export const getAddYourExpense = async (req, res) => {
+  res.render('add-your-expense');
+}
+
+// POST
 export const Signup = async (req, res) => {
   const { username, email, password } = req.body;
 
-  try{
-    
-    if(!username || !email || !password){
+  try {
+
+    if (!username || !email || !password) {
       alert('All fields are required');
     }
 
@@ -17,32 +46,32 @@ export const Signup = async (req, res) => {
     res.redirect('/user/login')
 
   }
-  catch(error) {
+  catch (error) {
     return res.staus(500).send(`Internal Server Error - ${error}`);
   }
 
 }
 
 export const Login = async (req, res) => {
-  const {email, password} = req.body;
+  const { email, password } = req.body;
 
-  try{
-    if(!email || !password){
+  try {
+    if (!email || !password) {
       res.send('All fields are required');
     }
 
     const user = await User.findOne({ email });
 
-    if(!user) {
+    if (!user) {
       res.send('User not found')
     }
 
     const checkPassword = await bcrypt.compare(password, user.password);
 
-    if(!checkPassword) {
+    if (!checkPassword) {
       res.send('Incorrect email or password')
     }
-    
+
     res.cookie('token', encodeURI(user._id), {
       httpOnly: true,
       secure: true,
@@ -51,10 +80,10 @@ export const Login = async (req, res) => {
     res.redirect('/user/dashboard');
 
   }
-  catch(error) {
+  catch (error) {
     return res.send(`Internal Server Error - ${error}`);
   }
-  
+
 }
 
 export const Logout = async (req, res) => {
@@ -63,23 +92,23 @@ export const Logout = async (req, res) => {
 }
 
 export const ForgotPassword = async (req, res) => {
-  const {email, newPassword} = req.body;
+  const { email, newPassword } = req.body;
 
-  try{
+  try {
 
-    if(!email || !newPassword){
+    if (!email || !newPassword) {
       res.send('All fields are required');
     }
 
     const user = await User.findOne({ email });
 
-    if(!user) {
+    if (!user) {
       res.send('User not found')
     }
 
     const checkPassword = await bcrypt.compare(newPassword, user.password);
 
-    if(checkPassword) {
+    if (checkPassword) {
       res.send('Old password and new password will be not same')
     }
 
@@ -89,7 +118,71 @@ export const ForgotPassword = async (req, res) => {
     user.save();
     res.redirect('/user/login');
   }
-  catch(error) {
+  catch (error) {
     return res.status(500).send(`Internal Server Error - ${error}`);
   }
 }
+
+export const addYourExpense = async (req, res) => {
+  const user = req.user;
+
+  const getId = user._id
+
+  const { expenseName, category, amount } = req.body;
+
+  if (!expenseName || !category || !amount) {
+    res.render('/user/add-your-expense')
+  }
+
+  const timestamp = Date.now();
+
+  const date = new Date(timestamp);
+  const hours = date.getHours().toString().padStart(2, '0');
+  const minutes = date.getMinutes().toString().padStart(2, '0');
+  const time = `${hours}:${minutes}`;
+
+  const expense = await Expense.create({
+    userId: getId,
+    expenseName,
+    category,
+    amount,
+    expenseCreatedAt: time
+  });
+
+  user.expenseNotes = expense._id
+  expense.save();
+  user.save();
+
+
+  res.redirect('/user/dashboard');
+
+}
+
+export const deleteExpense = async (req, res) => {
+  const id = req.params.id;
+
+  try {
+    const expense = await Expense.findById(id);
+
+    if (!expense) {
+      return res.redirect('/user/dashboard');
+    }
+
+    // 1. Delete expense
+    await Expense.deleteOne({ _id: id });
+    console.log(`Expense deleted from Expense DB`);
+
+    // 2. Remove expense ID from user's expenseNotes array
+    const user = await User.findOne({ _id: expense.userId });
+
+    if (user) {
+      user.expenseNotes = user.expenseNotes.filter(expId => !expId.equals(expense._id));
+      await user.save();
+    }
+
+    res.redirect('/user/dashboard');
+  } catch (error) {
+    console.error('Error deleting expense:', error);
+    res.status(500).send('Internal Server Error');
+  }
+};

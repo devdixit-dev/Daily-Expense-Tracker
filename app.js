@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url';
 import connectDB from './database/connectDatabase.js';
 import userRouter from './routes/userRoutes.js';
 import cookieParser from 'cookie-parser';
+import UserAuth from './middlewares/UserAuth.js';
 
 const app = express();
 const port = 3000;
@@ -29,26 +30,6 @@ app.get('/', (req, res) => {
   res.render('welcome')
 });
 
-app.get('/user/signup', (req, res) => {
-  res.render('signup');
-});
-
-app.get('/user/login', (req, res) => {
-  res.render('login');
-});
-
-app.get('/user/forgot-password', (req, res) => {
-  res.render('forgot-password')
-})
-
-app.get('/user/dashboard', (req, res) => {
-  res.render('dashboard');
-})
-
-app.get('/user/add-your-expense', (req, res) => {
-  res.render('add-your-expense')
-})
-
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
-});   
+});
