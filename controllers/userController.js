@@ -226,7 +226,7 @@ export const UpdateInfo = async (req, res) => {
 
     user.username = updatedUsername
     user.email = updatedEmail
-    user.password = newPassword
+    user.password = decodePassword
 
     user.save();
 
