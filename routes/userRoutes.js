@@ -1,5 +1,5 @@
 import express from 'express';
-import { addYourExpense, deleteExpense, ForgotPassword, getAddYourExpense, getDashboard, getForgotPassword, getLogin, getProfile, getSettings, getSignup, Login, Logout, Signup, UpdateInfo } from '../controllers/userController.js';
+import { addYourExpense, deleteExpense, ForgotPassword, getAboutUs, getAddYourExpense, getDashboard, getForgotPassword, getLogin, getProfile, getProjectInfo, getSettings, getSignup, Login, Logout, Signup, UpdateInfo } from '../controllers/userController.js';
 import UserAuth from '../middlewares/UserAuth.js';
 
 const userRouter = express.Router();
@@ -18,6 +18,10 @@ userRouter.get('/add-your-expense', getAddYourExpense);
 userRouter.get('/settings', UserAuth, getSettings);
 
 userRouter.get('/profile', UserAuth, getProfile);
+
+userRouter.get('/about-us', getAboutUs);
+
+userRouter.get('/project-info', getProjectInfo);
 
 // POST
 userRouter.post('/signup', Signup);

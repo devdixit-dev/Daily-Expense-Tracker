@@ -17,7 +17,6 @@
         -webkit-appearance: none;
         margin: 0;
       }
-
     }
   </style>
   <title>Add Your Expense</title>
@@ -39,18 +38,23 @@
         <form action="/user/update-info" method="post" class="w-full flex justify-center flex-col gap-2">
 
           <p class="mt-2">Username</p>
-          <input type="text" placeholder="Update your username" name="username" class="py-3 px-3 bg-transparent bg-yellow-300 border-2 rounded-sm outline-0">
+          <input type="text" placeholder="Update your username" value="<%= user.username %>" name="updatedUsername"
+            class="py-3 px-3 bg-transparent bg-yellow-300 border-2 rounded-sm outline-0">
 
           <p class="mt-2">Email</p>
-          <input type="text" placeholder="Update your email" name="email" class="py-3 px-3 bg-transparent bg-yellow-300 border-2 rounded-sm outline-0">
+          <input type="text" placeholder="Update your email" value="<%= user.email %>" name="updatedEmail"
+            class="py-3 px-3 bg-transparent bg-yellow-300 border-2 rounded-sm outline-0">
 
           <p class="mt-2">Old Password</p>
-          <input type="password" placeholder="Enter your old password" name="oldPassword" class="py-3 px-3 bg-transparent bg-yellow-300 border-2 rounded-sm outline-0">
+          <input type="password" placeholder="Enter your old password" name="oldPassword"
+            class="py-3 px-3 bg-transparent bg-yellow-300 border-2 rounded-sm outline-0">
 
           <p class="mt-2">New Password</p>
-          <input type="password" placeholder="Enter your new password" name="oldPassword" class="py-3 px-3 bg-transparent bg-yellow-300 border-2 rounded-sm outline-0">
+          <input type="password" placeholder="Enter your new password" name="newPassword"
+            class="py-3 px-3 bg-transparent bg-yellow-300 border-2 rounded-sm outline-0">
 
-          <input type="submit" value="Update Info" class="w-[50%] cursor-pointer flex m-auto py-3 px-3 bg-transparent bg-yellow-300 border-2 hover:shadow-xl rounded-sm outline-0 mt-4">
+          <input type="submit" value="Update Info"
+            class="w-[50%] cursor-pointer flex m-auto py-3 px-3 bg-transparent bg-yellow-300 border-2 hover:shadow-xl rounded-sm outline-0 mt-4">
         </form>
       </div>
 

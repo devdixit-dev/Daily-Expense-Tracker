@@ -34,7 +34,16 @@ export const getSettings = async (req, res) => {
 }
 
 export const getProfile = async (req, res) => {
-  res.render('profile')
+  const user = req.user;
+  res.render('profile', {user});
+}
+
+export const getAboutUs = async (req, res) => {
+  res.render('about-us')
+}
+
+export const getProjectInfo = async (req, res) => {
+  res.render('project-info')
 }
 
 // POST
@@ -196,5 +205,35 @@ export const deleteExpense = async (req, res) => {
 };
 
 export const UpdateInfo = async (req, res) => {
-  
+  const { updatedUsername, updatedEmail, oldPassword, newPassword } = req.body;
+  const getUser = req.user
+
+  try{
+
+    const user = await User.findOne({ _id: getUser._id });
+
+    if(!user) {
+      res.redirect('/user/settings');
+    }
+
+    const checkPassword = await bcrypt.compare(oldPassword, user.password);
+
+    if(!checkPassword) {
+      res.redirect('/user/settings');
+    }
+
+    const decodePassword = await bcrypt.hash(newPassword, 10)
+
+    user.username = updatedUsername
+    user.email = updatedEmail
+    user.password = newPassword
+
+    user.save();
+
+    res.redirect('/user/dashboard');
+
+  }
+  catch(error){
+    res.send(`Internal Server Error - ${error}`);
+  }
 }

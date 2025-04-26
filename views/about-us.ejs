@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      font-family: "Outfit", serif;
+    }
+  </style>
+  <title>About Us</title>
+</head>
+
+<body class="w-screen h-screen">
+  <div class="w-full h-full bg-zinc-800 flex justify-center items-center">
+    <div class="w-[430px] min-h-screen bg-[#FDFBD4] p-4">
+      <div class="w-full flex justify-between items-center">
+        <a href="/user/settings" class="text-lg">Back</a>
+        <form action="/user/logout" method="post">
+          <button type="submit"
+            class="cursor-pointer flex m-auto py-2 px-3 text-white bg-red-500 border-2 border-black hover:shadow-xl rounded-sm outline-0">Logout</button>
+        </form>
+      </div>
+
+      <div class="w-full flex flex-col gap-4 mt-10">
+        <h2 class="w-full flex justify-center text-xl">About Us</h2>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+      </div>
+
+    </div>
+
+  </div>
+</body>
+
+</html>
