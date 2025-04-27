@@ -98,7 +98,7 @@ export const Login = async (req, res) => {
 
   }
   catch (error) {
-    return res.send(`Internal Server Error - ${error}`);
+    res.send(`Internal Server Error - ${error}`);
   }
 
 }

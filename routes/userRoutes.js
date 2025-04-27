@@ -1,5 +1,24 @@
 import express from 'express';
-import { addYourExpense, deleteExpense, ForgotPassword, getAboutUs, getAddYourExpense, getDashboard, getForgotPassword, getLogin, getProfile, getProjectInfo, getSettings, getSignup, Login, Logout, Signup, UpdateInfo } from '../controllers/userController.js';
+
+import {
+  addYourExpense,
+  deleteExpense,
+  ForgotPassword,
+  getAboutUs,
+  getAddYourExpense,
+  getDashboard,
+  getForgotPassword,
+  getLogin,
+  getProfile,
+  getProjectInfo,
+  getSettings,
+  getSignup,
+  Login,
+  Logout,
+  Signup,
+  UpdateInfo
+} from '../controllers/userController.js';
+
 import UserAuth from '../middlewares/UserAuth.js';
 
 const userRouter = express.Router();

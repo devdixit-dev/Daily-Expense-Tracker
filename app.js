@@ -5,7 +5,6 @@ import { fileURLToPath } from 'url';
 import connectDB from './database/connectDatabase.js';
 import userRouter from './routes/userRoutes.js';
 import cookieParser from 'cookie-parser';
-import UserAuth from './middlewares/UserAuth.js';
 
 const app = express();
 const port = 3000;
@@ -19,12 +18,11 @@ const __dirname = path.dirname(__filename);
 
 app.use(express.static(path.join(__dirname, 'assets')));
 
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser())
 
 app.use('/user', userRouter);
-
 
 app.get('/', (req, res) => {
   res.render('welcome')
