@@ -154,16 +154,20 @@ export const addYourExpense = async (req, res) => {
   const timestamp = Date.now();
 
   const date = new Date(timestamp);
+
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+
   const hours = date.getHours().toString().padStart(2, '0');
   const minutes = date.getMinutes().toString().padStart(2, '0');
-  const time = `${hours}:${minutes}`;
+  const dateTime = `${day}/${month} - ${hours}:${minutes}`;
 
   const expense = await Expense.create({
     userId: getId,
     expenseName,
     category,
     amount,
-    expenseCreatedAt: time
+    expenseCreatedAt: dateTime
   });
 
   user.expenseNotes = expense._id
@@ -187,7 +191,6 @@ export const deleteExpense = async (req, res) => {
 
     // 1. Delete expense
     await Expense.deleteOne({ _id: id });
-    console.log(`Expense deleted from Expense DB`);
 
     // 2. Remove expense ID from user's expenseNotes array
     const user = await User.findOne({ _id: expense.userId });

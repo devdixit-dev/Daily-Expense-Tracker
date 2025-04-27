@@ -5,11 +5,11 @@ A simple and intuitive web app to help you track your daily expenses, manage you
 ## 🚀 Features
 
 - Add, edit, and delete expenses
-- Categorize expenses (e.g., Food, Transport, Entertainment, etc.)
-- View total expenses for the day, week, and month
+- Categorize expenses (feature not released yet...)
+- View total expenses for the day, week, and month (feature not released yet...)
 - UI for mobile app
 - Store data? connect to backend for persistent storage
-- Optional authentication (if implemented)
+- authentication
 
 ## 🛠️ Tech Stack
 
