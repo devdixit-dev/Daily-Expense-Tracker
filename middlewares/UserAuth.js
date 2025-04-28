@@ -18,7 +18,7 @@ const UserAuth = async (req, res, next) => {
     next();
   }
   catch(error) {
-    res.send(`Internal server error - ${error}`);
+    return res.send(`Internal server error - ${error}`);
   }
 }
 

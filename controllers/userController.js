@@ -74,19 +74,19 @@ export const Login = async (req, res) => {
 
   try {
     if (!email || !password) {
-      res.send('All fields are required');
+      console.log('All fields are required');
     }
 
     const user = await User.findOne({ email });
 
     if (!user) {
-      res.send('User not found')
+      return res.send('User not found')
     }
 
     const checkPassword = await bcrypt.compare(password, user.password);
 
     if (!checkPassword) {
-      res.send('Incorrect email or password')
+      return res.send('Incorrect email or password')
     }
 
     res.cookie('token', encodeURI(user._id), {
@@ -114,19 +114,19 @@ export const ForgotPassword = async (req, res) => {
   try {
 
     if (!email || !newPassword) {
-      res.send('All fields are required');
+      return res.send('All fields are required');
     }
 
     const user = await User.findOne({ email });
 
     if (!user) {
-      res.send('User not found')
+      return res.send('User not found')
     }
 
     const checkPassword = await bcrypt.compare(newPassword, user.password);
 
     if (checkPassword) {
-      res.send('Old password and new password will be not same')
+      return res.send('Old password and new password will be not same')
     }
 
     const decodePassword = await bcrypt.hash(newPassword, 10);
@@ -237,6 +237,6 @@ export const UpdateInfo = async (req, res) => {
 
   }
   catch(error){
-    res.send(`Internal Server Error - ${error}`);
+    return res.send(`Internal Server Error - ${error}`);
   }
 }
