@@ -1,13 +1,16 @@
 import express from 'express';
+import { config } from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
+
+config();
 
 import connectDB from './database/connectDatabase.js';
 import userRouter from './routes/userRoutes.js';
 import cookieParser from 'cookie-parser';
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT;
 
 connectDB();
 
