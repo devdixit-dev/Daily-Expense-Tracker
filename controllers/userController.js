@@ -1,6 +1,6 @@
 import Expense from '../models/Expense.js';
 import User from '../models/User.js'
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 
 // GET
 export const getDashboard = async (req, res) => {
